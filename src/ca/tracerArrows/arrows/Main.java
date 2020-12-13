@@ -196,8 +196,8 @@ public class Main extends JavaPlugin {
     getCommand("taconfig").setExecutor((CommandExecutor)new TACCommands());
     getCommand("tac").setTabCompleter((TabCompleter)new TACTab());
     getCommand("taconfig").setTabCompleter((TabCompleter)new TACTab());
-    getCommand("tag").setExecutor((CommandExecutor)new TACCommands());
-    getCommand("tagui").setExecutor((CommandExecutor)new TACCommands());
+    //getCommand("tag").setExecutor((CommandExecutor)new TACCommands());
+    //getCommand("tagui").setExecutor((CommandExecutor)new TACCommands());
   }
   
   public void onDisable() {

@@ -1,0 +1,18 @@
+name: TracerArrows
+main: ca.tracerArrows.arrows.Main
+version: 5.2
+api-version: 1.16
+commands:
+  taconfig:
+    description: Configuring particles.
+    aliases:
+    - tac
+    permission: ta.config
+    permission-message: You do not have permission to use this command.
+permissions:
+  ta.use:
+    description: Allows usage of tracer arrows.
+    default: true
+  ta.config:
+    description: Allows configuration of tracer arrows.
+    default: op
