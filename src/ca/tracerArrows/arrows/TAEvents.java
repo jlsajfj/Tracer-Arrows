@@ -3,6 +3,7 @@ package ca.tracerArrows.arrows;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.lang.ArrayUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -17,6 +18,7 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.Vector;
 
 public class TAEvents implements Listener {
@@ -55,6 +57,7 @@ public class TAEvents implements Listener {
 		ProjectileSource shooter = arrow.getShooter();
 		if (!(shooter instanceof Player))
 			return;
+		Player ps = (Player) shooter;
 		if (this.arrows.isEmpty())
 			return;
 		if (this.arrows.get(arrow) == null)
@@ -62,16 +65,18 @@ public class TAEvents implements Listener {
 		double[] l = ArrayUtils.toPrimitive(this.arrows.get(arrow));
 		Location aLoc = arrow.getLocation();
 		Location loc = new Location(aLoc.getWorld(), aLoc.getX(), aLoc.getY(), aLoc.getZ());
+		Scoreboard ms = Bukkit.getScoreboardManager().getMainScoreboard();
 		if (e.getHitEntity() != null) {
 			loc = e.getHitEntity().getLocation();
 			if (Main.ik && e.getHitEntity() instanceof Damageable) {
 				Damageable d = (Damageable) e.getHitEntity();
 				if (d instanceof Player) {
 					Player p = (Player) d;
-					if (!p.hasPermission("ta.i"))
-						d.damage(100.0D, (Player) shooter);
+					if (!p.hasPermission("ta.i") && !ms.getEntryTeam(ps.getDisplayName()).getName()
+							.equals(ms.getEntryTeam(p.getDisplayName()).getName()))
+						d.damage(100.0D, ps);
 				} else {
-					d.damage(100.0D, (Player) shooter);
+					d.damage(100.0D, ps);
 				}
 			}
 		}

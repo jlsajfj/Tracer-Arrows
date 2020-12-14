@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.bukkit.Particle;
 import org.bukkit.Server;
 import org.bukkit.command.CommandExecutor;
@@ -198,6 +199,7 @@ public class Main extends JavaPlugin {
     getCommand("taconfig").setTabCompleter((TabCompleter)new TACTab());
     //getCommand("tag").setExecutor((CommandExecutor)new TACCommands());
     //getCommand("tagui").setExecutor((CommandExecutor)new TACCommands());
+    //System.out.println(Bukkit.getScoreboardManager().getMainScoreboard().getEntries());
   }
   
   public void onDisable() {
