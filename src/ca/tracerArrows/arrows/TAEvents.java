@@ -41,7 +41,7 @@ public class TAEvents implements Listener {
 		Arrow arrow = (Arrow) e.getProjectile();
 		if (p.hasPermission("ta.use")) {
 			if (Main.laser)
-				arrow.setVelocity(arrow.getVelocity().multiply(50));
+				arrow.setVelocity(arrow.getVelocity().multiply(Main.multiplier));
 			arrow.setGravity(Main.gravity);
 		}
 		Location l = p.getLocation();

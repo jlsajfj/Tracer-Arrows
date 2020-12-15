@@ -17,7 +17,7 @@ public class TACTab implements TabCompleter {
       args[0].equalsIgnoreCase("instakill") || args[0].equalsIgnoreCase("creeper")) {
       String[] temp = { "True", "False" };
       return new ArrayList<>(Arrays.asList(temp));
-    } 
+    }
     List<String> completions = new ArrayList<>(Arrays.asList(Main.SPARTICLES));
     completions.add("List");
     completions.add("Laser");
@@ -25,6 +25,7 @@ public class TACTab implements TabCompleter {
     completions.add("Instakill");
     completions.add("KillArrows");
     completions.add("Creeper");
+    completions.add("Speed");
     List<String> a = new ArrayList<>();
     StringUtil.copyPartialMatches(args[0], completions, a);
     Collections.sort(a);
